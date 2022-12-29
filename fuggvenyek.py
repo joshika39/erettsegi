@@ -24,3 +24,5 @@ print(f'haromszog 3 3. oldala: {haromszog3_c}')
 # fontos linek:
 # https://www.w3schools.com/python/python_functions.asp
 # https://www.programiz.com/python-programming/function
+
+# Minta a git feltoltesre
