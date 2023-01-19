@@ -40,7 +40,7 @@ for sor in sorok:
     # kicsatl.append(k_mp)
 
 print('3. Feladat')
-hivasok = [0 for i in range(0, 20)]
+hivasok = [0 for i in range(0, 20)]  # 0->19ig fel toltjuk nullakkal
 print(hivasok)   # csak tesztelesre
 
 for hivas in becsatl:
@@ -48,25 +48,50 @@ for hivas in becsatl:
 
 print(hivasok)  # csak tesztelesre
 
-for index, hivas in enumerate(hivasok):
-    if hivas != 0:
-        print(f'{index} ora {hivas} hivas')
+hivasok_hossz = len(hivasok)
+for index in range(0, hivasok_hossz):
+    if hivasok[index] != 0:
+        print(f'{index} ora {hivasok[index]} hivas')
 
-# hivasszam = 0  # Tarolja az egy orahoz tartozo hivasok szamat
-# jelen_ora = becsatl[0][0]  # Eloszor beallitom a legelso hivas orajara
-# for i, hivas in enumerate(becsatl):  # Hasznat veszem a lista elemeinek az indexenek
-#
-#     # Megnezem, hogy az epp szamolas alatti ora van e soron
-#     if jelen_ora == becsatl[i][0]:
-#         hivasszam += 1  # noveljuk egyel a jelen hivasok szamat
-#
-#     #  Megnezzuk van e kovetkezo elem
-#     if i + 1 < len(becsatl):
-#
-#         # Van e ora valtas es ha igen, akkor mindent vissza allitunk az alap allapotba
-#         if becsatl[i][0] != becsatl[i + 1][0]:
-#             print(f'{jelen_ora} ora {hivasszam} hivas')
-#             # print(f'Ora valtas tortent: {becsatl[i][0]} != {becsatl[i + 1][0]}')
-#             hivasszam = 0
-#             jelen_ora = becsatl[i + 1][0]  # kovetkezo elem ora erteke
+print('4. Feladat')
+
+
+becsatl_mp = mpbe(becsatl[0][0], becsatl[0][1], becsatl[0][2])
+kicsatl_mp = mpbe(kicsatl[0][0], kicsatl[0][1], kicsatl[0][2])
+hossz = kicsatl_mp - becsatl_mp
+
+max_hossz = hossz
+max_hossz_i = 0
+
+hivasok_hossz = len(kicsatl)
+for i in range(1, hivasok_hossz):
+    becsatl_mp = mpbe(becsatl[i][0], becsatl[i][1], becsatl[i][2])
+    kicsatl_mp = mpbe(kicsatl[i][0], kicsatl[i][1], kicsatl[i][2])
+    hossz = kicsatl_mp - becsatl_mp
+    if hossz > max_hossz:
+        max_hossz = hossz
+        max_hossz_i = i
+
+print(f'A leghosszabb ideig vonalban levo hivo {max_hossz_i + 1}. sorban szerepel,a hivas hossza: {max_hossz} masodperc.')
+
+print('5. Feladat')
+
+ora_str = input('Adjon meg egy idopontot! (ora perc masodperc) ')
+adatok = ora_str.split(' ')
+
+ora = int(adatok[0])
+perc = int(adatok[1])
+mp = int(adatok[2])
+ido_mp = mpbe(ora, perc, mp)
+
+hivasok_hossz = len(kicsatl)
+for i in range(0, hivasok_hossz):
+    becsatl_mp = mpbe(becsatl[i][0], becsatl[i][1], becsatl[i][2])
+    kicsatl_mp = mpbe(kicsatl[i][0], kicsatl[i][1], kicsatl[i][2])
+    if ora >= 8:
+        if becsatl_mp < ido_mp and kicsatl_mp > ido_mp:
+            print(f'A varakozok szama: _ a beszelo a {i+1}. hivo.')
+
+
+
 
