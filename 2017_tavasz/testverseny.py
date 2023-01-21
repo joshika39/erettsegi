@@ -25,3 +25,4 @@ azonosito = input('A versenyző azonosítója = ')
 for i in range(0, versenyzok_hossz):
     if versenyzok[i] == azonosito:
         print(f'{valaszok[i]}\t(a versenyzo valasza)')
+
