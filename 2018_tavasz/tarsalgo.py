@@ -22,14 +22,16 @@ print(f"Az utolsó kilépő: {utolso_kilepo}")
 
 # print("3. Feladat")
 szemelyek_athaladasa = [0 for i in range(0, 51)]
+
 for atjaras in atjarasok:
-    id = atjaras[2]
-    # print(f'Setalo id: {id}')  # csak tesztelesre
-    szemelyek_athaladasa[id] += 1
+    szemelyek_athaladasa[atjaras[2]] += 1
+
 athaladas_file = open('athaladsok.txt', 'w')
+
 for i in range(0, 51):
     if szemelyek_athaladasa[i] != 0:
         athaladas_file.write(f"{i} {szemelyek_athaladasa[i]}\n")
+        
 athaladas_file.close()
 
 print('4. Feladat')
